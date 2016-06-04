@@ -11,6 +11,8 @@ public final class Constants {
     public static final String COMMAND_DIR = "dir";
     public static final String COMMAND_TREE = "tree";
     public static final String COMMAND_CD = "cd";
+    public static final String SPACE = " ";
+
 
 
     public static final String DOLLAR = "$";
@@ -20,8 +22,7 @@ public final class Constants {
     public static final String UNKNOWN_COMMAND ="unknown command";
     public static final String PARENT_DIR ="..";
     public static final String EXIT ="exit";
-    public static final String TO_MANY_ARGUMENTS ="To many arguments..";
 
-    public static final String DEFAULT_PROMPT = Constants.MYSHELL + Constants.DOLLAR + Constants.RIGHT_BRACKET;
+    public static final String DEFAULT_PROMPT = MYSHELL + DOLLAR + RIGHT_BRACKET;
 
 }

@@ -1,11 +1,22 @@
 package com.epam.kozlak.interview.view;
 
 
+import com.epam.kozlak.interview.util.Constants;
+
 public class Console {
     private static Console ourInstance = new Console();
 
     private String oneWordCommand;
     private String[] twoWordCOmmand;
+    private String[] moreThanTwoWordCommand;
+    private String currentCommandPrompt;
+
+    private Console() {
+    }
+
+    public static Console getInstance() {
+        return ourInstance;
+    }
 
     public String[] getTwoWordCOmmand() {
         return twoWordCOmmand;
@@ -23,10 +34,19 @@ public class Console {
         this.oneWordCommand = oneWordCommand;
     }
 
-    public static Console getInstance() {
-        return ourInstance;
+    public String[] getMoreThanTwoWordCommand() {
+        return moreThanTwoWordCommand;
     }
 
-    private Console() {
+    public void setMoreThanTwoWordCommand(String[] moreThanTwoWordCommand) {
+        this.moreThanTwoWordCommand = moreThanTwoWordCommand;
+    }
+
+    public String getCurrentCommandPrompt() {
+        return currentCommandPrompt;
+    }
+
+    public void setCurrentCommandPrompt(String currentCommandPrompt) {
+        this.currentCommandPrompt = currentCommandPrompt;
     }
 }

@@ -34,7 +34,7 @@ public class CommandLineControllerImpl implements CommandLineControllerInterface
             if (file.isDirectory()) {
                 System.setProperty("user.dir", dir);
             } else {
-                System.out.println("Directory does not exist.");
+                System.out.print("Directory does not exist." + Constants.NEW_LINE);
             }
         }
     }
@@ -44,12 +44,16 @@ public class CommandLineControllerImpl implements CommandLineControllerInterface
         if (0 == commandLine.length ) {
             // TODO
         }
-        if (1 == commandLine.length) {
+        if (commandLine.length==1) {
             console.setOneWordCommand(commandLine[0]);
         }
-        if (2 == commandLine.length) {
+        if (commandLine.length==2) {
             console.setTwoWordCOmmand(commandLine);
         }
+        if (commandLine.length>2){
+            console.setMoreThanTwoWordCommand(commandLine);
+        }
+
         return commandLine.length;
     }
 

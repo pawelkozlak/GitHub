@@ -7,5 +7,7 @@ public interface PromptBuilderInterface {
     public String buildUserParameterPrompt(String userParameter);
     public String buildDir();
     public String buildTree();
+    public String buildUnknownCommand(String command);
+    public String buildUnknownCommand(String[] command);
 
 }
