@@ -21,7 +21,7 @@ public class MessageServiceImpl implements MessageServiceInterface {
         }
 
         commandLineController.displayInCommandLine(promptBuilder.buildDefaultPrompt());
-        System.out.print("[LOG]: {handleOneWordCommand}");
+        System.out.print("[LOG]: {handleOneWordCommanddd}");
     }
 
     public void handleTwoWordCommand(CommandLineControllerInterface commandLineController) {
