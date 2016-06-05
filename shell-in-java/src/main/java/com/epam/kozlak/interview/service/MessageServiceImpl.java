@@ -18,7 +18,7 @@ public class MessageServiceImpl implements MessageServiceInterface {
     public void handleOneWordCommand(CommandLineControllerInterface commandLineController) {
 
         if(Constants.EXIT.equals(console.getOneWordCommand())) {
-            commandLineController.displayInCommandLine("About to exit...");
+            commandLineController.displayInCommandLine("Bye");
             System.exit(0);
         }
         if(Constants.COMMAND_DIR.equals(console.getOneWordCommand())) {
@@ -27,7 +27,8 @@ public class MessageServiceImpl implements MessageServiceInterface {
             return;
         }
         if(Constants.COMMAND_TREE.equals(console.getOneWordCommand())) {
-            commandLineController.displayInCommandLine(promptBuilder.buildTree());
+            commandLineController.displayInCommandLine(promptBuilder.buildTree(System.getProperty("user.dir")));    
+            commandLineController.displayInCommandLine(promptBuilder.setTreeContent());
             commandLineController.displayInCommandLine(console.getCurrentCommandPrompt());
             return;
         }

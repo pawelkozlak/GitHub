@@ -1,11 +1,16 @@
 package com.epam.kozlak.interview.service;
 
+import java.io.File;
+
 import com.epam.kozlak.interview.util.Constants;
 
 
 public class PromptBuilderImpl implements PromptBuilderInterface {
 
-    @Override
+	String pause = "-";
+	String currentTreeContent = "";
+	
+	@Override
     public String buildCurentDirPrompt() {
         return Constants.MYSHELL + Constants.SPACE + System.getProperty("user.dir") + Constants.RIGHT_BRACKET;
     }
@@ -19,13 +24,47 @@ public class PromptBuilderImpl implements PromptBuilderInterface {
     }
     @Override
     public String buildDir() {
-        return "[LOG]: DIR STRUCTURE - TODO " + Constants.NEW_LINE;
+    	String currentDirContent ="";
+		File f = new File(System.getProperty("user.dir"));
+    	File[] files = f.listFiles();
+		for (File file : files) {
+		if (file.isDirectory()){
+			currentDirContent += "DIR " + file.getName() + Constants.NEW_LINE;	
+		}
+		else {
+			currentDirContent += "FILE " + file.getName() + Constants.NEW_LINE;
+			}
+		}
+		return currentDirContent;
     }
+   
     @Override
-    public String buildTree() {
-        return "[LOG]: TREE STRUCTURE - TODO "  + Constants.NEW_LINE;
-    }
+    public String buildTree(String path) {
+    	File root = new File( path );
+        File[] list = root.listFiles();
 
+        if (list == null) return "no such file or directory";
+
+          for (File f : list) {  
+			if ( f.isDirectory() ) {     		
+				currentTreeContent +=  pause + f.getName() + Constants.NEW_LINE;
+				pause += "-"; 							
+				buildTree( f.getAbsolutePath() );					
+			}
+            else {
+            	currentTreeContent +=  pause + f.getName() + Constants.NEW_LINE ;			
+				}
+		  }
+		 pause = pause.substring(0, pause.length() - 1);
+    	return currentTreeContent;
+    }    
+
+    @Override
+    public String setTreeContent(){
+    	currentTreeContent = "";
+    	pause = "-";
+    	return "";
+    }
     @Override
     public String buildUnknownCommand(String command) {
         return Constants.UNKNOWN_COMMAND + ": "+ command  + Constants.NEW_LINE;

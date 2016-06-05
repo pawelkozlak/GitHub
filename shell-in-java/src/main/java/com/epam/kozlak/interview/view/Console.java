@@ -10,6 +10,7 @@ public class Console {
     private String[] twoWordCOmmand;
     private String[] moreThanTwoWordCommand;
     private String currentCommandPrompt;
+    private String currentTreeContent;
 
     private Console() {
     }
@@ -49,4 +50,5 @@ public class Console {
     public void setCurrentCommandPrompt(String currentCommandPrompt) {
         this.currentCommandPrompt = currentCommandPrompt;
     }
+    
 }

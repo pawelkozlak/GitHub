@@ -12,7 +12,7 @@ public final class Constants {
     public static final String COMMAND_TREE = "tree";
     public static final String COMMAND_CD = "cd";
     public static final String SPACE = " ";
-
+    public static final String BACKSLASH = "\\";
 
 
     public static final String DOLLAR = "$";

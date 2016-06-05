@@ -12,10 +12,12 @@ public class CommandLineControllerImpl implements CommandLineControllerInterface
 
     Scanner scanner;
     Console console;
-
+    
+   
     public CommandLineControllerImpl() {
         scanner = new Scanner(System.in);
         console = Console.getInstance();
+       
     }
 
     public void displayInCommandLine(String msg) {
@@ -24,18 +26,17 @@ public class CommandLineControllerImpl implements CommandLineControllerInterface
 
 
     public void changeDirectory(String dir) {
-        if (Constants.PARENT_DIR.equals(dir)) {
+    	if (Constants.PARENT_DIR.equals(dir)) {
             File file = new File(System.getProperty("user.dir"));
             String parentPath = file.getAbsoluteFile().getParent();
             System.setProperty("user.dir", parentPath);
         } else {
-
-            File file = new File(dir);
-            if (file.isDirectory()) {
-                System.setProperty("user.dir", dir);
-            } else {
-                System.out.print("Directory does not exist." + Constants.NEW_LINE);
-            }
+        	    File file = new File(System.getProperty("user.dir") + Constants.BACKSLASH + dir);
+            	if (file.isDirectory()) {
+                	System.setProperty("user.dir", System.getProperty("user.dir") + Constants.BACKSLASH + dir);
+            	} else {
+            		System.out.print("Directory does not exist." + Constants.NEW_LINE);
+            		}    
         }
     }
 
